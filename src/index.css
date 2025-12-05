@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Mars Colony Theme - Fond Global: Bleu Nuit Profond */
+    --background: 215 65% 11%;
+    --foreground: 0 0% 100%;
+
+    /* Fond des Cartes: Bleu Marin / Métallique */
+    --card: 220 59% 24%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 59% 24%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primaire: Orange Martien */
+    --primary: 12 81% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Bleu Marin légèrement plus clair */
+    --secondary: 220 50% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: Texte Secondaire Gris Clair */
+    --muted: 220 40% 18%;
+    --muted-foreground: 218 18% 71%;
+
+    --accent: 12 81% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Danger: Orange Vif / Alerte */
+    --destructive: 16 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Succès: Vert Cybernétique */
+    --success: 165 100% 40%;
+    --success-foreground: 215 65% 11%;
+
+    --border: 220 40% 35%;
+    --input: 220 50% 18%;
+    --ring: 12 81% 53%;
+
+    --radius: 1rem;
+
+    /* 1ère Place: Or/Jaune Vif */
+    --gold: 46 100% 50%;
+    --gold-glow: 46 100% 60%;
+    /* 2ème Place: Argent */
+    --silver: 218 15% 65%;
+    --silver-glow: 218 15% 75%;
+    /* 3ème Place: Bronze/Cuivre Martien */
+    --bronze: 20 70% 45%;
+    --bronze-glow: 20 70% 55%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(46, 100%, 50%), hsl(38, 100%, 45%));
+    --gradient-silver: linear-gradient(135deg, hsl(218, 15%, 70%), hsl(218, 15%, 55%));
+    --gradient-bronze: linear-gradient(135deg, hsl(20, 70%, 50%), hsl(15, 65%, 38%));
+    --gradient-card: linear-gradient(135deg, hsl(220, 59%, 26%), hsl(220, 59%, 20%));
+    --gradient-mars: radial-gradient(ellipse at center, hsl(12, 81%, 53%, 0.15), transparent 70%);
+
+    /* Shadows avec ambiance Mars */
+    --shadow-gold: 0 0 30px hsl(46, 100%, 50%, 0.5);
+    --shadow-silver: 0 0 25px hsl(218, 15%, 65%, 0.4);
+    --shadow-bronze: 0 0 20px hsl(20, 70%, 45%, 0.4);
+    --shadow-card: 0 4px 24px hsl(215, 65%, 5%, 0.7);
+    --shadow-mars: 0 0 40px hsl(12, 81%, 53%, 0.25);
+    --shadow-neon: 0 0 20px hsl(185, 100%, 50%, 0.3);
+
+    --sidebar-background: 215 65% 11%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 12 81% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 50% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 40% 35%;
+    --sidebar-ring: 12 81% 53%;
+  }
+
+  .dark {
+    --background: 215 65% 11%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/90 backdrop-blur-xl border border-border/60 rounded-2xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  .glow-mars {
+    box-shadow: var(--shadow-mars);
+  }
+
+  .glow-neon {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .glow-silver {
+    box-shadow: var(--shadow-silver);
+  }
+
+  .glow-bronze {
+    box-shadow: var(--shadow-bronze);
+  }
+
+  .rank-badge {
+    @apply inline-flex items-center justify-center font-bold rounded-full;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .rank-gold {
+    background: var(--gradient-gold);
+    @apply text-background;
+  }
+
+  .rank-silver {
+    background: var(--gradient-silver);
+    @apply text-background;
+  }
+
+  .rank-bronze {
+    background: var(--gradient-bronze);
+    @apply text-background;
+  }
+
+  .score-display {
+    font-family: 'Orbitron', sans-serif;
+    @apply tabular-nums;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .console-panel {
+    @apply bg-card border border-border rounded-2xl;
+    box-shadow: var(--shadow-card), inset 0 1px 0 hsl(220, 50%, 35%, 0.3);
+  }
+}
+
+@layer utilities {
+  .text-gradient-mars {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(46, 100%, 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-cyber {
+    background: linear-gradient(135deg, hsl(var(--success)), hsl(185, 100%, 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes score-change {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rank-up {
+  0% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes mars-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(12, 81%, 53%, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(12, 81%, 53%, 0.5);
+  }
+}
+
+.animate-score-change {
+  animation: score-change 0.3s ease-out;
+}
+
+.animate-rank-up {
+  animation: rank-up 0.4s ease-out;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-mars-pulse {
+  animation: mars-pulse 2s ease-in-out infinite;
+}
